@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Link Safety Checker</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>Link Safety Checker</h1>
+
+    <section id="security-section">
+      <div id="security-badge" class="badge badge--unknown">Checking…</div>
+      <div id="security-detail" class="detail"></div>
+    </section>
+
+    <section id="safe-browsing-section">
+      <div id="safe-browsing-badge" class="badge badge--unknown">Checking…</div>
+      <div id="safe-browsing-detail" class="detail"></div>
+    </section>
+
+    <section id="links-section">
+      <h2 id="links-heading">Suspicious links</h2>
+      <ul id="links-list"></ul>
+    </section>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

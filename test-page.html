@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Link Safety Checker — Test Page</title>
+    <style>
+      body { font-family: sans-serif; max-width: 640px; margin: 40px auto; line-height: 1.8; }
+      li { margin-bottom: 10px; }
+    </style>
+  </head>
+  <body>
+    <h1>Link Safety Checker — test cases</h1>
+    <p>Hover each link to see the tooltip the extension adds. All three should get a red outline.</p>
+    <ul>
+      <li>
+        <strong>Text/destination mismatch:</strong>
+        <a href="https://example.com/not-really-paypal">www.paypal.com</a>
+      </li>
+      <li>
+        <strong>Plain HTTP:</strong>
+        <a href="http://example.com/insecure">Insecure example link</a>
+      </li>
+      <li>
+        <strong>Typosquat domain:</strong>
+        <a href="https://paypa1.com/login">Log in to your account</a>
+      </li>
+      <li>
+        <strong>Control — should NOT be flagged (legitimate link):</strong>
+        <a href="https://example.com/about">About us</a>
+      </li>
+      <li>
+        <strong>Control — should NOT be flagged (dotted brand name in prose, not a bare URL):</strong>
+        <a href="https://nodejs.org">Built with Node.js</a>
+      </li>
+    </ul>
+  </body>
+</html>

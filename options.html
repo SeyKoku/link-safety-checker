@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Link Safety Checker — Settings</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        max-width: 480px;
+        margin: 40px auto;
+        color: #1f2328;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      p {
+        color: #57606a;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: 16px;
+        margin-bottom: 4px;
+      }
+      input[type="password"],
+      input[type="text"] {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #d0d7de;
+        border-radius: 4px;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 16px;
+        font-size: 14px;
+        background: #1f2328;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      #status {
+        font-size: 13px;
+        margin-top: 10px;
+      }
+      #status.saved {
+        color: #116329;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Link Safety Checker — Settings</h1>
+    <p>
+      Paste your Google Safe Browsing API key below to enable checking pages against Google's list of known
+      malicious sites. This key is stored only on this computer, in Chrome's local extension storage — it is never
+      sent anywhere except directly to Google's Safe Browsing API when a page is checked.
+    </p>
+
+    <label for="api-key">Safe Browsing API key</label>
+    <input type="password" id="api-key" autocomplete="off" placeholder="AIza..." />
+    <div>
+      <button id="save">Save</button>
+      <button id="clear" type="button">Clear</button>
+    </div>
+    <div id="status"></div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
