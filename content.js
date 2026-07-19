@@ -148,15 +148,21 @@ function scanPage() {
     }
   }
 
-  chrome.runtime.sendMessage({
-    type: "LINK_SCAN_RESULT",
-    count: items.length,
-    items: items.slice(0, 50), // cap payload size for pages with huge numbers of flags
-  });
+  return items.slice(0, 50); // cap payload size for pages with huge numbers of flags
 }
 
-// MVP limitation: this scans once after the initial page render. Pages that
-// inject links dynamically later (infinite-scroll feeds, SPA route changes)
-// won't get re-scanned. A MutationObserver could cover that but adds
-// complexity/perf cost we don't need for a first working version.
+// The popup pulls results on demand rather than us pushing a one-time
+// snapshot to background.js: the service worker gets killed by Chrome after
+// ~30s idle and loses anything held only in memory, but this content script
+// lives as long as the page does. Rescanning per-request (instead of
+// caching the initial pass) also means links added after page load — an
+// infinite-scroll feed, an SPA route change — get picked up on next popup
+// open instead of never.
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === "GET_LINK_SCAN") {
+    const items = scanPage();
+    sendResponse({ count: items.length, items });
+  }
+});
+
 scanPage();
